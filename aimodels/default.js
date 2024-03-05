@@ -1,7 +1,7 @@
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
-  apiKey: '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'
+  apiKey: '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'
 });
 
 module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
