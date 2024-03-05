@@ -1,4 +1,5 @@
 const axios = require('axios');
+const moment = require('moment-timezone');
 
 module.exports = async ({ api, event }) => {
   if (event.body.split(' ')[1] === '-help') {
@@ -23,7 +24,10 @@ module.exports = async ({ api, event }) => {
         throw new Error(`API RETURNED THIS: ${res}`);
       }
 
-      txtWiki += `🔎 You searched for the word '${res.title}' \n\n TimeStamp: ${res.timestamp}\n\n Description: ${res.description}\n\n Info: ${res.extract}\n\nSource: https://en.wikipedia.org`;
+      // Convert timestamp to Nepali time
+      const nepaliTime = moment(res.timestamp).tz('Asia/Kathmandu').format('YYYY-MM-DD HH:mm:ss');
+
+      txtWiki += `🔎 You searched for the word '${res.title}' \n\n TimeStamp: ${nepaliTime}\n\n Description: ${res.description}\n\n Info: ${res.extract}\n\nSource: https://en.wikipedia.org`;
       api.sendMessage(txtWiki, event.threadID, event.messageID);
     } catch (err) {
       api.sendMessage(err.message, event.threadID, event.messageID);
