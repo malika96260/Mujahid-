@@ -1,89 +1,52 @@
-const { Innertube, UniversalCache, Utils } = require("youtubei.js");
+const axios = require("axios");
 const fs = require("fs");
-module.exports = async ({ api, event, config }) => {
-  const { name, prefix } = config;
-  let input = event.body;
-  let data = input.split(" ");
+const request = require("request");
+module.exports = ({ api, event }) => {
   if (
     !!event.body.split(" ")[1] &&
     event.body.split(" ")[1].includes("-help")
   ) {
     const usage =
-      "Name: Music\n\n" +
-      "Usage: ¢play [Music Title]\n\n" +
-      "Description: Sends any music that you want.";
+      "Name: TiktokDL\n\n" +
+      "Usage: ¢tiktokdl [url]\n\n" +
+      "Description: Tiktok downloader.";
     return api.sendMessage(usage, event.threadID, event.messageID);
   }
+  let input = event.body;
+  let data = input.split(" ");
   if (data.length < 2) {
     api.sendMessage(
-      `⚠️Invalid Use Of Command!\n💡Usage: ${prefix}playlyrics <title of music>`,
-      event.threadID
+      "Where's the fucking tiktok url?",
+      event.threadID,
+      event.messageID
     );
   } else {
-    try {
-      data.shift();
-      const yt = await Innertube.create({
-        cache: new UniversalCache(false),
-        generate_session_locally: true,
-      });
-      const search = await yt.music.search(data.join(" "), { type: "video" });
-      if (search.results[0] === undefined) {
-        api.sendMessage("Audio not found!", event.threadID, event.messageID);
-      } else {
-        api.sendMessage(
-          `🔍 Searching for the music ${data.join(" ")}.`,
-          event.threadID,
-          event.messageID
+    data.shift();
+    let url = data.join(" ");
+    api.sendMessage(
+      "Downloading please wait.",
+      event.messageID,
+      event.threadID
+    );
+    axios
+      .get(`https://tiktok-dl.libyzxy0.repl.co/?url=${url}`)
+      .then((response) => {
+        let file = fs.createWriteStream(
+          "utilities/commands/noprefix/cache/tiktokdl.mp4"
         );
-      }
-      const info = await yt.getBasicInfo(search.results[0].id);
-      const url = info.streaming_data?.formats[0].decipher(yt.session.player);
-      const stream = await yt.download(search.results[0].id, {
-        type: "audio", // audio, video or video+audio
-        quality: "best", // best, bestefficiency, 144p, 240p, 480p, 720p and so on.
-        format: "mp4", // media container format
-      });
-      const file = fs.createWriteStream(`utilities/commands/noprefix/cache/music.mp3`);
-
-      async function writeToStream(stream) {
-        for await (const chunk of Utils.streamToIterable(stream)) {
-          await new Promise((resolve, reject) => {
-            file.write(chunk, (error) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve();
-              }
-            });
-          });
-        }
-
-        return new Promise((resolve, reject) => {
-          file.end((error) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve();
-            }
-          });
+        let rqs = request(response.data.url);
+        rqs.pipe(file);
+        file.on("finish", () => {
+          api.sendMessage(
+            {
+              attachment: fs.createReadStream(
+                __dirname + "/cache/tiktokdl.mp4"
+              ),
+            },
+            event.threadID,
+            event.messageID
+          );
         });
-      }
-
-      async function main() {
-        await writeToStream(stream);
-        api.sendMessage(
-          {
-            body: `${info.basic_info["title"]}`,
-            attachment: fs.createReadStream(__dirname + "/cache/music.mp3"),
-          },
-          event.threadID,
-          event.messageID
-        );
-      }
-
-      main();
-    } catch (err) {
-      api.sendMessage(`Error ${err}`, event.threadID, event.messageID);
-    }
+      });
   }
-}
+};
