@@ -1,6 +1,7 @@
 const fs = require("fs");
-const https = require("https"); // Change "http" to "https"
-module.exports = ({ api, event, config }) => {
+const axios = require("axios");
+
+module.exports = async ({ api, event, config }) => {
   const { prefix } = config;
   const data = event.body.split(" ");
 
@@ -14,23 +15,22 @@ module.exports = ({ api, event, config }) => {
     try {
       data.shift();
       const prompt = data.join(" ");
-      const url = `https://sampleapi.netlify.app/.netlify/functions/api/aiimage/generate?prompt=${encodeURIComponent(
+      const url = `https://all-image-genator-d1p.onrender.com/dipto/meta?prompt=${encodeURIComponent(
         prompt
-      )}&chs=300x300`; // Updated API URL
+      )}&key=dipto008`; // Updated API URL
 
-      const file = fs.createWriteStream(__dirname + "/cache/imagine.png");
-      https.get(url, function (rqs) {
-        rqs.pipe(file);
-        file.on("finish", function () {
-          api.sendMessage(
-            {
-              attachment: fs.createReadStream(__dirname + "/cache/imagine.png"),
-            },
-            event.threadID,
-            event.messageID
-          );
-        });
-      });
+      const response = await axios.get(url, { responseType: "arraybuffer" });
+      const imageData = Buffer.from(response.data, "binary");
+
+      fs.writeFileSync(__dirname + "/cache/imagine.png", imageData);
+
+      api.sendMessage(
+        {
+          attachment: fs.createReadStream(__dirname + "/cache/imagine.png"),
+        },
+        event.threadID,
+        event.messageID
+      );
     } catch (err) {
       api.sendMessage(`Error: ${err}`, event.threadID, event.messageID);
     }
