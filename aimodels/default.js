@@ -1,12 +1,15 @@
-const { GPT } = require('openai');
+Here's the updated code using the new syntax for the OpenAI API:
 
-const openai = new GPT({
-  apiKey: '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'
+```javascript
+const OpenAI = require('openai');
+
+const openai = new OpenAI({
+  apiKey: ''
 });
 
 module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
   try {
-    const chatCompletion = await openai.chat.create({
+    const chatCompletion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
@@ -15,7 +18,7 @@ module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
         },
       ],
     });
-    callback(chatCompletion.messages[1].content);
+    callback(chatCompletion.choices[0].message.content);
   } catch (err) {
     if (err instanceof OpenAI.APIError) {
       callback(`OpenAI Error: ${err.message}`);
@@ -24,3 +27,6 @@ module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
     }
   }
 }
+```
+
+I've updated the syntax for accessing the response content from `chatCompletion.choices[0].message.content`.
