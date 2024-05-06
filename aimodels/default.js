@@ -1,6 +1,3 @@
-Here's the updated code using the new syntax for the OpenAI API:
-
-```javascript
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
