@@ -1,7 +1,7 @@
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
-  apiKey: ''
+  apiKey: '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'
 });
 
 module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
@@ -24,6 +24,3 @@ module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
     }
   }
 }
-```
-
-I've updated the syntax for accessing the response content from `chatCompletion.choices[0].message.content`.
