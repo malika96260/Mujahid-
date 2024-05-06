@@ -1,12 +1,12 @@
-const OpenAI = require('openai');
+const { GPT } = require('openai');
 
-const openai = new OpenAI({
+const openai = new GPT({
   apiKey: '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'
 });
 
 module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
   try {
-    const chatCompletion = await openai.chat.completions.create({
+    const chatCompletion = await openai.chat.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
@@ -15,7 +15,7 @@ module.exports = async ({ text, userInfo, aiPrefix }, callback) => {
         },
       ],
     });
-    callback(chatCompletion.choices[0].message["content"]);
+    callback(chatCompletion.messages[1].content);
   } catch (err) {
     if (err instanceof OpenAI.APIError) {
       callback(`OpenAI Error: ${err.message}`);
