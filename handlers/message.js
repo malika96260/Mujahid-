@@ -43,70 +43,6 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger: "haha", 
-        responses: [
-            "haserai morlas khatey", 
-            "malai ruwayera hasxas 😡", 
-            "nahas ."
-        ]
-    },
-    {
-        trigger: "I love you", 
-        responses: [
-            "sorry I have girlfriend", 
-            "please convey this to my owner", 
-            "sojo bot dekhnai nahuni"
-        ]
-    },
-    {
-        trigger: "Ahh", 
-        responses: [
-            "Bhh", 
-            "Ehh", 
-            "Zhh"
-        ]
-    },
-    {
-        trigger: "sanchai", 
-        responses: [
-            "ekdam . tmi ?", 
-            "thik xa hajur", 
-            "nai timro yaad le sataxa"
-        ]
-    },
-    {
-        trigger: "jheu lagyo", 
-        responses: [
-            "kata tira lagyo", 
-            "horaa gajab vayexa", 
-            "ramro vayexa ta"
-        ]
-    },
-    {
-        trigger: "Bot", 
-        responses: [
-            "hajur", 
-            "mero naam Bishesh ho", 
-            "Kati bolako jheu lagyo"
-        ]
-    },
-    {
-        trigger: "bepy", 
-        responses: [
-            "hajur baby", 
-            "yes honey", 
-            "yes darling"
-        ]
-    },
-    {
-        trigger: "khaja khayeu", 
-        responses: [
-            "umm tmile ni?", 
-            "yes khako", 
-            "yeasto malai nasoda"
-        ]
-    },
-    {
         trigger: "muji", 
         responses: [
             "teri ama muji", 
@@ -130,22 +66,6 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger: "Roshani", 
-        responses: [
-            "khali uslai nabolau na", 
-            "Roshni bishesh sanga xa", 
-            "No disturbance please"
-        ]
-    },
-    {
-        trigger: "Shishir", 
-        responses: [
-            "Sanskari kta ho", 
-            "Ekdam Ramro manxey", 
-            "Shishir handsome kta ho"
-        ]
-    },
-    {
         trigger:"huss", 
         responses: [
             "ta maith*n", 
@@ -165,7 +85,7 @@ module.exports = async ({ api, event, config, userInfo }) => {
   function simsimi(prompt, array) {
       const lowerPrompt = prompt.toLowerCase();
 
-      const foundItem = array.find(item => lowerPrompt.includes(item.trigger.toLowerCase()));
+      const foundItem = array.find(item => lowerPrompt.includes(item.trigger));
 
       if (foundItem) {
           const randomIndex = Math.floor(Math.random() * foundItem.responses.length);
