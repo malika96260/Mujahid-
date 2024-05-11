@@ -165,4 +165,4 @@ module.exports = async ({ api, event, config, userInfo }) => {
       }
     }
   }
-}
+};
