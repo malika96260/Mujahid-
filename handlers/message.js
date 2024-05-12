@@ -19,30 +19,6 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger: "hello", 
-        responses: [
-            "Hello", 
-            "Hallooo", 
-            "Zup Maderpaker"
-        ]
-    },
-    {
-        trigger: "I love you.", 
-        responses: [
-            "Love you too.", 
-            "sorry ?", 
-            "Thank you for loving."
-        ]
-    },
-    {
-        trigger: "Bot", 
-        responses: [
-            "Hajur", 
-            "What ?", 
-            "yes babe?"
-        ]
-    },
-    {
         trigger: "timro", 
         responses: [
             "sabai thok xw", 
@@ -67,19 +43,11 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger: "Hi", 
-        responses: [
-            "Hi sir namaste", 
-            " namskar van", 
-            "hi k xa sathi"
-        ]
-    },
-    {
-        trigger: "Machikne", 
+        trigger: "machikne", 
         responses: [
             "chup muji", 
             "xada bolyo", 
-            "Oi muji randi"
+            "oi muji randi"
         ]
     },
     {
@@ -118,6 +86,30 @@ module.exports = async ({ api, event, config, userInfo }) => {
             "basdai. tmi ni ?", 
             "khana khadai xu",
             "assignment 😭"
+        ]
+    },
+    {
+        trigger:"roshani", 
+        responses: [
+            "disturb nagar ma sanga xa", 
+            "k vayo disturb nagar uslai",
+            "mero babe lai bolako"
+        ]
+    },
+    {
+        trigger:"bot", 
+        responses: [
+            "hajur kina bolako", 
+            "yes ?",
+            "what ???"
+        ]
+    },
+    {
+        trigger:"i love you", 
+        responses: [
+            "love you too honey .", 
+            "love you",
+            "thank you keep loving"
         ]
     },
 ];
