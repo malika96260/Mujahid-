@@ -11,6 +11,46 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
+        trigger: "hi", 
+        responses: [
+            "Hiiiiii", 
+            "Hi k xa", 
+            "Zup Maderpakerr"
+        ]
+    },
+    {
+        trigger: "hello", 
+        responses: [
+            "Hello", 
+            "Hallooo", 
+            "Zup Maderpaker"
+        ]
+    },
+    {
+        trigger: "I love you.", 
+        responses: [
+            "Love you too.", 
+            "sorry ?", 
+            "Thank you for loving."
+        ]
+    },
+    {
+        trigger: "Bot", 
+        responses: [
+            "Hajur", 
+            "What ?", 
+            "yes babe?"
+        ]
+    },
+    {
+        trigger: "timro", 
+        responses: [
+            "sabai thok xw", 
+            "sab xa", 
+            "ekdam babaal"
+        ]
+    },
+    {
         trigger: "hora", 
         responses: [
             "Haina hola", 
@@ -19,7 +59,7 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger: "xkka", 
+        trigger: "xakka", 
         responses: [
             "tai hos sala xakka", 
             "xakka hos aije mero lado khelaidey", 
