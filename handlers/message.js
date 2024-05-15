@@ -81,6 +81,63 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
+        trigger:"ko", 
+        responses: [
+            "koi na koi", 
+            "ma"
+        ]
+    },
+    {
+        trigger:"Namaste", 
+        responses: [
+            "Namaste", 
+            "Namaskar"
+        ]
+    },
+    {
+        trigger:"bujhyo", 
+        responses: [
+            "nai bujhena", 
+            "umm sabai bujhyo"
+        ]
+    },
+    {
+        trigger:"valu", 
+        responses: [
+            "Tmilai ama bau le yei sikako", 
+            "Jungle ma hola"
+        ]
+    },
+    {
+        trigger:"xada", 
+        responses: [
+            "oi rada nabol xada", 
+            "Xada nabola hai ramro manxey bannu parxa"
+        ]
+    },
+    {
+        trigger:"baula", 
+        responses: [
+            "tai holas baula", 
+            "Bado badi navahai"
+        ]
+    },
+    {
+        trigger:"😂", 
+        responses: [
+            "aajhai haas chikne", 
+            "nahas baccha"
+        ]
+    },
+    {
+        trigger:"bau", 
+        responses: [
+            "tero bau ", 
+            "tero bau sanchai xan",
+            "k ama bau tira gako"
+        ]
+    },
+    {
         trigger:"k gardai", 
         responses: [
             "basdai. tmi ni ?", 
@@ -89,11 +146,11 @@ module.exports = async ({ api, event, config, userInfo }) => {
         ]
     },
     {
-        trigger:"roshani", 
+        trigger:"😮", 
         responses: [
-            "disturb nagar ma sanga xa", 
-            "k vayo disturb nagar uslai",
-            "mero babe lai bolako"
+            "mukh ma haldim ?", 
+            "alli thulo gara ta khojaidinxu",
+            "kochaidim"
         ]
     },
     {
