@@ -15,7 +15,7 @@ module.exports = async ({ api, event }) => {
     }
     try {
       let data = await axios.get(
-        `https://shoti-api.libyzxy0.repl.co/api/get-shoti?apikey=shoti-1hgkdct729qe8b3lsb`
+        `https://shoti-api.libyzxy0.repl.co/api/get-shoti?apikey=$shoti-1httooejod0pknj40lg`
       );
       const downloadVideo = async (url, destinationPath) => {
         try {
