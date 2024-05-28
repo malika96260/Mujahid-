@@ -7,8 +7,8 @@ module.exports = async ({ api, event }) => {
     event.body.split(" ")[1].includes("-help")
   ) {
     const usage =
-      "Name: Help\n\n" +
-      "Usage: ¢help [int]\n\n" +
+      "Name: Assist\n\n" +
+      "Usage: ¢Assist [int]\n\n" +
       "Description: Sends all commands that bot have!";
     return api.sendMessage(usage, event.threadID, event.messageID);
   }
