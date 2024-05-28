@@ -9,8 +9,8 @@ module.exports = async ({ api, event, config }) => {
     event.body.split(" ")[1].includes("-help")
   ) {
     const usage =
-      "Name: Vudeo\n\n" +
-      "Usage: ¢video [Video Title]\n\n" +
+      "Name: Video\n\n" +
+      "Usage: Video [Video Title]\n\n" +
       "Description: Sends any video that you want.";
     return api.sendMessage(usage, event.threadID, event.messageID);
   }
