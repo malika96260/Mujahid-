@@ -15,9 +15,7 @@ module.exports = async ({ api, event, config }) => {
     try {
       data.shift();
       const prompt = data.join(" ");
-      const url = `https://all-image-genator-d1p.onrender.com/dipto/meta?prompt=${encodeURIComponent(
-        prompt
-      )}&key=dipto008`; // Updated API URL
+      const url = `https://api.easy-api.online/api/poli?q=${encodeURIComponent(prompt)}`;
 
       const response = await axios.get(url, { responseType: "arraybuffer" });
       const imageData = Buffer.from(response.data, "binary");
